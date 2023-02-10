@@ -81,4 +81,20 @@
   background: #232D3E;
   margin: auto;
   margin-top: 30px;
+  padding: 20px;
+  font-size:32px
+}
+
+.innerchat{
+  margin-left: 20px;
+}
+
+.cyan {
+  color: #2FF3FF;
+}
+.yellow {
+  color: #FFEA2F;
+}
+.orange {
+  color: #FFA654;
 }
