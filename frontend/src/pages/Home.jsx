@@ -1,22 +1,13 @@
 import React, { useState } from "react";
-import "./Home.css";
+import "../styles/Home.css";
 import axios from "axios";
-
-let init = {
-  first: "",
-  second: "",
-};
+import Form from "../components/Form";
 
 const Home = () => {
-  const [formDet, setFormDet] = useState(init);
   const [carrystr, setCarrystr] = useState([]);
   const [sumstr, setSumstr] = useState([]);
-  const handlefirst = (e) => {
-    const { name, value } = e.target;
-    setFormDet({ ...formDet, [name]: value });
-  };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, formDet) => {
     e.preventDefault();
     let data = await axios.post(`https://addnumbers.onrender.com`, formDet);
     setCarrystr(data.data.carryingarr);
@@ -28,35 +19,10 @@ const Home = () => {
       <div className="headerbox">
         <h1 className="heading">Step Addition</h1>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="numberdiv">
-          <h6 className="firstnum">First number</h6>
-          <input
-            type={"number"}
-            className="firstnumber"
-            onInput={handlefirst}
-            required
-            name="first"
-            value={formDet.first}
-          ></input>
-        </div>
-        <div className="numberdiv">
-          <h6 className="firstnum">Second number</h6>
-          <input
-            type={"number"}
-            className="firstnumber"
-            onInput={handlefirst}
-            required
-            name="second"
-            value={formDet.second}
-          ></input>
-        </div>
-        <button type="submit" className="submitbtn">
-          Generate Steps
-        </button>
-      </form>
+      <Form handleSubmit={handleSubmit}></Form>
       <div className="ansouterbox">
-        <div className="ansinnerbox">
+      <div className="ansinnerbox">
+      {sumstr.length > 0 ? <>
           <p className="yellow">&#123;</p>
           {sumstr?.map((el, index) => {
             return (
@@ -70,7 +36,8 @@ const Home = () => {
               </div>
             );
           })}
-          <p className="yellow">&#125;</p>
+          <p className="yellow">&#125;</p> 
+        </>: null}
         </div>
       </div>
     </div>
