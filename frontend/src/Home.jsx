@@ -5,6 +5,7 @@ let init = {
   first: "",
   second: "",
 };
+
 const Home = () => {
   const [formDet, setFormDet] = useState(init);
   const handlefirst = (e) => {
@@ -44,6 +45,12 @@ const Home = () => {
           Generate Steps
         </button>
       </form>
+      <div className="ansouterbox">
+        <div className="ansinnerbox">
+          <p>&#123;</p>
+          {}
+        </div>
+      </div>
     </div>
   );
 };

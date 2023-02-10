@@ -65,3 +65,20 @@
     margin-top: 40px;
     margin-left: 800px;
 }
+
+.ansouterbox{
+  width: 979px; 
+  height: 600px; 
+  background: #E9E9E9;
+  margin: auto;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.ansinnerbox{
+  width: 926px;
+  height: 540px;
+  background: #232D3E;
+  margin: auto;
+  margin-top: 30px;
+}
