@@ -1,11 +1,14 @@
+import { Button } from '@chakra-ui/react';
 import React, { useState } from 'react'
 
 let init = {
     first: "",
     second: "",
   };
-const Form = ({handleSubmit}) => {
+const Form = ({handleSubmit,loading}) => {
     const [formDet, setFormDet] = useState(init);
+
+    // filling the formData
     const handlefirst = (e) => {
         const { name, value } = e.target;
         setFormDet({ ...formDet, [name]: value });
@@ -36,9 +39,10 @@ const Form = ({handleSubmit}) => {
             value={formDet.second}
           ></input>
         </div>
-        <button type="submit" className="submitbtn">
+        <Button type="submit" className="submitbtn" isLoading={loading} loadingText="Loading" colorScheme='teal'
+    variant='outline'>
           Generate Steps
-        </button>
+        </Button>
       </form>
     </>
   )

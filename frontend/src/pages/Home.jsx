@@ -6,12 +6,20 @@ import Form from "../components/Form";
 const Home = () => {
   const [carrystr, setCarrystr] = useState([]);
   const [sumstr, setSumstr] = useState([]);
+  const [loading,setLoading] = useState(false);
 
+  // Submitting the formDetails containing two numbers and Fetching the results
   const handleSubmit = async (e, formDet) => {
     e.preventDefault();
-    let data = await axios.post(`https://addnumbers.onrender.com`, formDet);
-    setCarrystr(data.data.carryingarr);
-    setSumstr(data.data.sumarr);
+    setLoading(true);
+    try{
+      let data = await axios.post(`https://addnumbers.onrender.com`, formDet);
+      setCarrystr(data.data.carryingarr);
+      setSumstr(data.data.sumarr);
+      setLoading(false);
+    }catch(err){
+      setLoading(false);
+    }
   };
 
   return (
@@ -19,7 +27,7 @@ const Home = () => {
       <div className="headerbox">
         <h1 className="heading">Step Addition</h1>
       </div>
-      <Form handleSubmit={handleSubmit}></Form>
+      <Form handleSubmit={handleSubmit} loading={loading}></Form>
       <div className="ansouterbox">
       <div className="ansinnerbox">
       {sumstr.length > 0 ? <>
